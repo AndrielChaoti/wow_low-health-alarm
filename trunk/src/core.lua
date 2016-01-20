@@ -19,6 +19,7 @@ local LSM = LibStub("LibSharedMedia-3.0")
 local select, error, tconcat, tostringall, type = select, error, table.concat, tostringall, type
 local assert, PlaySoundFile, debugprofilestop = assert, PlaySoundFile, debugprofilestop
 local UnitHealth, UnitHealthMax, UnitIsDeadOrGhost = UnitHealth, UnitHealthMax, UnitIsDeadOrGhost
+local timer = C_Timer
 
 ----------------------
 -- Useful Functions --
@@ -149,13 +150,13 @@ function A:SetBeepSpeed(speed)
 
 	if not self.BeepSpeed or self.BeepSpeed > 0 then
 		-- Cancel the current beeps and start anew.
-		self:CancelTimer(ticker)
+		ticker:Cancel()
 	end
 
 	if speed == 0 then
-		self:CancelTimer(ticker)
+		ticker:Cancel()
 	else
-		ticker = self:ScheduleRepeatingTimer("Beep", speed)
+		ticker = timer.NewTicker("Beep", speed)
 		self:Beep()
 	end
 
