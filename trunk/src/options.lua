@@ -52,7 +52,7 @@ A.Options.args = {
 		name = format(L["DLG/Version"], A:GetVersion(false, false)),
 		type = "header",
 		order = 0
-	}
+	},
 	Enabled = {
 		name = L["DLG/Enable"],
 		desc = L["DLGTT/Enable"],
