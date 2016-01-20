@@ -49,14 +49,15 @@ end
 -- Settings here need to be the same name as the settings in DF...
 A.Options.args = {
 	VersionHeader = {
-		name = format(L["DLG/Version"], A:GetVersion(false, false))
-		type = "header"
+		name = format(L["DLG/Version"], A:GetVersion(false, false)),
+		type = "header",
+		order = 0
 	}
 	Enabled = {
 		name = L["DLG/Enable"],
 		desc = L["DLGTT/Enable"],
 		type = "toggle",
-		order = 0,
+		order = 10,
 		set = function(info, value)
 			if value == false then
 				A:Disable()
@@ -70,12 +71,12 @@ A.Options.args = {
 		name = L["DLG/Login Message"],
 		desc = L["DLGTT/Login Message"],
 		type = "toggle",
-		order = 10,
+		order = 20,
 	},
 	Settings = {
 		name = L["DLG/Main Config"],
 		type = "group",
-		order = 20,
+		order = 30,
 		inline = true,
 		args = {
 			Thresholds = {
