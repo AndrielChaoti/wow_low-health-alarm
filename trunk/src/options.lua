@@ -48,6 +48,10 @@ end
 
 -- Settings here need to be the same name as the settings in DF...
 A.Options.args = {
+	VersionHeader = {
+		name = format(L["DLG/Version"], A:GetVersion(false, false))
+		type = "header"
+	}
 	Enabled = {
 		name = L["DLG/Enable"],
 		desc = L["DLGTT/Enable"],
