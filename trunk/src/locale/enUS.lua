@@ -1,23 +1,9 @@
---[[
-	Project: LowHealthAlarm
-	Friendly Name: Low Health Alarm
-	Author: Vandesdelca32
-
-	File: enUS.lua
-	Purpose: English Localization
-
-	Version: @file-revision@
-
-	ALL RIGHTS RESERVED.
-	COPYRIGHT (c)2016 VANDESDELCA32
-]]
-
 local appName = ...
 local L = LibStub("AceLocale-3.0"):NewLocale(appName, "enUS", true, true)
 
 if L then
 
---@localization(locale="enUS", format="lua_additive_table", handle-subnamespaces="concat", )@
+--@localization(locale="enUS", format="lua_additive_table", handle-subnamespaces="concat")@
 
 --@do-not-package@
 L["CHAT/BrokenConfig"] = "Your config is out of date, resetting it!"
