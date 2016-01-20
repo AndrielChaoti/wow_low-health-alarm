@@ -109,6 +109,7 @@ end
 -----------
 
 local lastBeep, ticker
+A.BeepSpeed = 0
 
 function A:Beep()
   if (not lastBeep) or (debugprofilestop() >= lastBeep + A.BeepSpeed) then
