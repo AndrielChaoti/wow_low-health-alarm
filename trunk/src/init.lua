@@ -17,6 +17,7 @@ local AppName, App = ...
 -- Get the libraries loaded up
 local MyAddon = LibStub("AceAddon-3.0"):NewAddon(AppName, "AceEvent-3.0", "AceTimer-3.0")
 local LSM = LibStub("LibSharedMedia-3.0")
+local AC = LibStub("AceConfig-3.0")
 
 LibStub("LibVan32-1.0"):Embed(MyAddon, AppName)
 
@@ -75,7 +76,9 @@ function MyAddon:OnInitialize()
 		self:ToggleOptions()
 	end
 
+	-- Set up the config
 	self:CheckSettingsDB()
+	self:BuildOptionsTable()
 
 	-- Add in our sounds...
 	LSM:Register("sound", "LoZ: Link to the Past Beep", [[Interface\AddOns\LowHealthAlarm\media\LTTP_LowHealth.ogg]])

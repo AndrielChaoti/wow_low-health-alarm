@@ -111,7 +111,7 @@ end
 local lastBeep, ticker
 A.BeepSpeed = 0
 
-local function Beep()
+function A:Beep()
   if (not lastBeep) or (debugprofilestop() >= lastBeep + A.BeepSpeed) then
     lastBeep = debugprofilestop()
     local volume = self:GetSetting("BeepVolume")
@@ -157,7 +157,7 @@ function A:SetBeepSpeed(speed)
 	if speed == 0 then
 		ticker:Cancel()
 	else
-		ticker = timer.NewTicker(speed, Beep)
+		ticker = timer.NewTicker(speed, function() self:Beep() end)
 		self:Beep()
 	end
 
