@@ -15,7 +15,7 @@
 local AppName, App = ...
 
 -- Get the libraries loaded up
-local MyAddon = LibStub("AceAddon-3.0"):NewAddon(AppName, "AceEvent-3.0", "AceTimer-3.0")
+local MyAddon = LibStub("AceAddon-3.0"):NewAddon(AppName, "AceEvent-3.0")
 local LSM = LibStub("LibSharedMedia-3.0")
 local AC = LibStub("AceConfig-3.0")
 
