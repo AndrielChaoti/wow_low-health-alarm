@@ -108,19 +108,21 @@ end
 -- Addon --
 -----------
 
-local lastBeep, ticker
+local firstBeep, lastBeepTime, ticker
 A.BeepSpeed = 0
 
 function A:Beep()
-  if (not lastBeep) or (debugprofilestop() >= lastBeep + A.BeepSpeed) then
-    lastBeep = debugprofilestop()
-    local volume = self:GetSetting("BeepVolume")
-    local soundFile = assert(LSM:Fetch("sound", self:GetSetting("BeepFile")))
-    local soundChannel = self:GetSetting("SoundChannel")
-    for i = 1, volume do
-      PlaySoundFile(soundFile, soundChannel);
-    end
-  end
+	if (not lastBeepTime) or (debugprofilestop() >= lastBeepTime + A.BeepSpeed) then
+		lastBeepTime = debugprofilestop()
+		local volume = self:GetSetting("BeepVolume")
+		local soundFile = assert(LSM:Fetch("sound", self:GetSetting("BeepFile")))
+		local soundChannel = self:GetSetting("SoundChannel")
+		for i = 1, volume do
+			-- Workaround: Cancel the first beep, so we ignore zone change beeping...
+			if not firstBeep and self:GetSetting("SkipFirstBeep") then firstBeep = true; return end
+			PlaySoundFile(soundFile, soundChannel);
+		end
+	end
 end
 
 --- Check the unit's health
@@ -156,6 +158,7 @@ function A:SetBeepSpeed(speed)
 
 	if speed == 0 then
 		ticker:Cancel()
+		firstBeep = false
 	else
 		ticker = timer.NewTicker(speed, function() self:Beep() end)
 		self:Beep()
