@@ -175,7 +175,7 @@ function A:BuildOptionsTable()
 							order = 0,
 							func = function()
 							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Low\" Health"]))
-							  A:SetBeepSpeed(self:GetSetting("Base") / self:GetSetting("Multiplier"))
+							  A:SetBeepSpeed(self:GetSetting("Base") * self:GetSetting("Multiplier"))
 							end
 						},
 						MedBeep = {
@@ -193,7 +193,7 @@ function A:BuildOptionsTable()
 							order = 20,
 							func = function()
 							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Critical\" Health"]))
-							  A:SetBeepSpeed(self:GetSetting("Base") * self:GetSetting("Multiplier"))
+							  A:SetBeepSpeed(self:GetSetting("Base") / self:GetSetting("Multiplier"))
 							end
 						},
 						StopBeep = {
