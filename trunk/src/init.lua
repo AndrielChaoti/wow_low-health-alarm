@@ -29,17 +29,18 @@ MyAddon._Revision = "@project-revision@"
 
 -- Initialize Options...
 local AppDefaults = {
-	_VER				= 3,
-	Enabled			= true,
-	LoginMessage	= true,
-	HP_CRITICAL		= 0.10,
-	HP_WARNING		= 0.25,
-	HP_LOW			= 0.40,
-	Base				= 1.0,
-	Multiplier		= 2.0,
-	BeepFile			= "LoZ: Link to the Past Beep",
-	BeepVolume		= 3,
-	SoundChannel	= "SFX",
+	_VER				= 3,												-- Settings Version
+	Enabled			= true,											-- Enable Switch
+	LoginMessage	= true,											-- Show Login Message
+	HP_CRITICAL		= 0.10,											-- Beep Level Critical (%)
+	HP_WARNING		= 0.25,											-- Beep Level Warning (%)
+	HP_LOW			= 0.40,											-- Beep Level Low (%)
+	Base				= 1.0,											-- Beep Speed Base Value
+	Multiplier		= 2.0,											-- Beep Speed Multiplier Value
+	BeepFile			= "LoZ: Link to the Past Beep",			-- Beep Sound Effect
+	BeepVolume		= 3,												-- Beep "volume"
+	SoundChannel	= "SFX",											-- The sound channel that beeps will play on
+	SkipFirstBeep  = true, 											-- Used to work around the zone change beeping
 }
 
 local function Get( info )

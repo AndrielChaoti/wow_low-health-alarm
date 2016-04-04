@@ -25,6 +25,8 @@ local DEFAULT_HEIGHT = 450
 
 ACD:SetDefaultSize(DEFAULT_WIDTH, DEFAULT_HEIGHT, appName)
 
+local format, math = format, math
+
 -- GLOBALS: InterfaceOptionsFrame_OpenToCategory
 -- GLOBALS: InCombatLockdown, LowHealthAlarm_DB
 
@@ -92,12 +94,12 @@ function A:BuildOptionsTable()
 							type = "range",
 							min = 0.01,
 							max = 1,
-							validate = function(info, value) 
+							validate = function(info, value)
 								if value > self:GetSetting("HP_WARNING") then
-									return "Must be below Dangerous Health value" 
-								else 
-									return false 
-								end 
+									return "Must be below Dangerous Health value"
+								else
+									return false
+								end
 							end,
 							step = 0.01,
 							isPercent = true,
@@ -158,6 +160,64 @@ function A:BuildOptionsTable()
 							softMax = 4,
 							bigStep = 0.5,
 							order = 2
+						}
+					}
+				},
+				Testing = {
+					name = L["DLG/Test Buttons"],
+					type = "group",
+					inline = true,
+					order = 40,
+					args = {
+						SlowBeep = {
+							name = L["DLG/\"Low\" Beep"],
+							type = "execute",
+							order = 0,
+							func = function()
+							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Low\" Health"]))
+							  A:SetBeepSpeed(self:GetSetting("Base") / self:GetSetting("Multiplier"))
+							end
+						},
+						MedBeep = {
+							name = L["DLG/\"Dangerous\" Beep"],
+							type = "execute",
+							order = 10,
+							func = function()
+							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Dangerous\" Health"]))
+							  A:SetBeepSpeed(self:GetSetting("Base"))
+							end
+						},
+						FastBeep = {
+							name = L["DLG/\"Critical\" Beep"],
+							type = "execute",
+							order = 20,
+							func = function()
+							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Critical\" Health"]))
+							  A:SetBeepSpeed(self:GetSetting("Base") * self:GetSetting("Multiplier"))
+							end
+						},
+						StopBeep = {
+							name = L["DLG/Stop All"],
+							type = "execute",
+							order = 30,
+							width = "full",
+							func = function()
+								A:PrintMessage(L["CHAT/StopBeeps"])
+								A:SetBeepSpeed(0)
+							end
+						}
+					}
+				},
+				Misc = {
+					name = L["DLG/Misc Settings"],
+					type = "group",
+					order = 50,
+					inline = true,
+					args = {
+						SkipFirstBeep = {
+							name = L["DLG/Skip First Beep"],
+							desc = L["DLGTT/Skip First Beep"],
+							type = "toggle"
 						}
 					}
 				},
