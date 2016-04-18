@@ -93,36 +93,45 @@ function A:BuildOptionsTable()
 							desc = L["DLGTT/\"Critical\" Health"],
 							type = "range",
 							min = 0.01,
-							max = 1,
-							validate = function(info, value)
-								if value > self:GetSetting("HP_WARNING") then
-									return "Must be below Dangerous Health value"
-								else
-									return false
-								end
-							end,
+							max = self:GetSetting("HP_WARNING") - 0.01, -- Temporary... Will be modified by setters/getters here.
 							step = 0.01,
 							isPercent = true,
+							set = function(info, value)
+									-- Sets the min/max of neighbouring sliders so values can't overlap and break the addon.
+									self.Options.args.Settings.args.Thresholds.args.HP_WARNING.min = value + 0.01
+									LowHealthAlarm_DB[info[#info]] = value
+								end,
 							order = 0
 						},
 						HP_WARNING  = {
 							name = L["DLG/\"Dangerous\" Health"],
 							desc = L["DLGTT/\"Dangerous\" Health"],
 							type = "range",
-							min = 0.01,
-							max = 1,
+							min = self:GetSetting("HP_CRITICAL") + 0.01,
+							max = self:GetSetting("HP_LOW") - 0.01,
 							step = 0.01,
 							isPercent = true,
+							set = function(info, value)
+									-- Sets the min/max of neighbouring sliders so values can't overlap and break the addon.
+									self.Options.args.Settings.args.Thresholds.args.HP_CRITICAL.max = value - 0.01
+									self.Options.args.Settings.args.Thresholds.args.HP_LOW.min = value + 0.01
+									LowHealthAlarm_DB[info[#info]] = value
+								end,
 							order = 10
 						},
 						HP_LOW      = {
 							name = L["DLG/\"Low\" Health"],
 							desc = L["DLGTT/\"Low\" Health"],
 							type = "range",
-							min = 0.01,
-							max = 1.0,
+							min = self:GetSetting("HP_WARNING") + 0.01,
+							max = 0.8,
 							step = 0.01,
 							isPercent = true,
+							set = function(info, value)
+									-- Sets the min/max of neighbouring sliders so values can't overlap and break the addon.
+									self.Options.args.Settings.args.Thresholds.args.HP_WARNING.max = value - 0.01
+									LowHealthAlarm_DB[info[#info]] = value
+								end,
 							order = 20
 						}
 					}
