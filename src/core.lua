@@ -57,12 +57,12 @@ end
 function A:CheckSettingsDB()
 	-- They don't have a settings database
 	if not LowHealthAlarm_DB then
-		self:PrintErr(L["CHAT/NoConfig"])
+		self:PrintError(L["CHAT/NoConfig"])
 		LowHealthAlarm_DB = DF
 		return false
 	-- Or their settings are outdated
 	elseif self:GetSetting("_VER") ~= DF._VER then
-		self:PrintErr(L["CHAT/BrokenConfig"])
+		self:PrintError(L["CHAT/BrokenConfig"])
 		LowHealthAlarm_DB = DF
 		return false
 	end

@@ -32,7 +32,7 @@ local format, math = format, math
 
 function A:ToggleOptions()
 	if InCombatLockdown() then
-		self:PrintErr(L["CHAT/CombatLoadError"])
+		self:PrintError(L["CHAT/CombatLoadError"])
 		return
 	end
 	InterfaceOptionsFrame_OpenToCategory("Low Health Alarm")
@@ -183,7 +183,7 @@ function A:BuildOptionsTable()
 							type = "execute",
 							order = 0,
 							func = function()
-							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Low\" Health"]))
+							  A:Print(format(L["CHAT/Testing"], L["DLG/\"Low\" Health"]))
 							  A:SetBeepSpeed(self:GetSetting("Base") * self:GetSetting("Multiplier"))
 							end
 						},
@@ -192,7 +192,7 @@ function A:BuildOptionsTable()
 							type = "execute",
 							order = 10,
 							func = function()
-							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Dangerous\" Health"]))
+							  A:Print(format(L["CHAT/Testing"], L["DLG/\"Dangerous\" Health"]))
 							  A:SetBeepSpeed(self:GetSetting("Base"))
 							end
 						},
@@ -201,7 +201,7 @@ function A:BuildOptionsTable()
 							type = "execute",
 							order = 20,
 							func = function()
-							  A:PrintMessage(format(L["CHAT/Testing"], L["DLG/\"Critical\" Health"]))
+							  A:Print(format(L["CHAT/Testing"], L["DLG/\"Critical\" Health"]))
 							  A:SetBeepSpeed(self:GetSetting("Base") / self:GetSetting("Multiplier"))
 							end
 						},
@@ -211,7 +211,7 @@ function A:BuildOptionsTable()
 							order = 30,
 							width = "full",
 							func = function()
-								A:PrintMessage(L["CHAT/StopBeeps"])
+								A:Print(L["CHAT/StopBeeps"])
 								A:SetBeepSpeed(0)
 							end
 						}
