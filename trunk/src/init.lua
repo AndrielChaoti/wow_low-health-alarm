@@ -15,11 +15,11 @@
 local AppName, App = ...
 
 -- Get the libraries loaded up
-local MyAddon = LibStub("AceAddon-3.0"):NewAddon(AppName, "AceEvent-3.0")
+local MyAddon = LibStub("AceAddon-3.0"):NewAddon(AppName, "AceEvent-3.0", "LibVan32-2.0")
 local LSM = LibStub("LibSharedMedia-3.0")
 local AC = LibStub("AceConfig-3.0")
 
-LibStub("LibVan32-1.0"):Embed(MyAddon, AppName)
+--LibStub("LibVan32-1.0"):Embed(MyAddon, AppName)
 
 MyAddon._Major = "@project-version@"
 MyAddon._Revision = "@project-revision@"
@@ -96,7 +96,7 @@ function MyAddon:OnEnable()
 	-- the game that wasn't available in OnInitialize
 	local verStr = self:GetVersion(false, true)
 	if self:GetSetting("LoginMessage") then
-		self:PrintMessage(format(L["CHAT/LoginMessage"], verStr))
+		self:Print(format(L["CHAT/LoginMessage"], verStr))
 	end
 
 	self:RegisterEvent("UNIT_HEALTH_FREQUENT")
