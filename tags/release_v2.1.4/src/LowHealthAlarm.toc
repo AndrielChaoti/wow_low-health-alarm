@@ -1,0 +1,17 @@
+## Interface: 70000
+## Title: Low Health Alarm
+## Notes: Plays noises and warns the player when they're dying
+## Version: @project-version@
+## Author: Vandesdelca32
+## SavedVariables: LowHealthAlarm_DB
+
+#libraries
+embeds.xml
+
+#localization
+locale\loadLocale.xml
+
+#core code
+init.lua
+core.lua
+options.lua
