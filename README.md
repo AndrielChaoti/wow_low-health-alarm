@@ -10,9 +10,9 @@ You can get to the addon's settings by typing `/lowhealth`, `/lh` or `/lha` in c
 ### Speed explanation:
 The addon has configurable "speed" settings, which means, it can beep faster the lower health you are. The system works pretty simply, but here's an explanation:
 
-*"Low" health will beep slowly (speed * multiplier)
-*"Dangerous" health will beep at a medium rate (speed)
-*"Critical" health will beep at a fast rate (speed / multiplier)
+* "Low" health will beep slowly (speed * multiplier)
+* "Dangerous" health will beep at a medium rate (speed)
+* "Critical" health will beep at a fast rate (speed / multiplier)
 
 ### Quick Setup Example
 #### If you want your sound effect to play once every second, regardless of your health:
