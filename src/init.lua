@@ -22,7 +22,7 @@ local AC = LibStub("AceConfig-3.0")
 --LibStub("LibVan32-1.0"):Embed(MyAddon, AppName)
 
 MyAddon._Major = "@project-version@"
-MyAddon._Revision = "@project-revision@"
+MyAddon._Revision = "@project-abbreviated-hash@"
 
 -- GLOBALS: SLASH_LOWHEALTHALARM1,SLASH_LOWHEALTHALARM2,SLASH_LOWHEALTHALARM3
 -- GLOBALS: SlashCmdList, LowHealthAlarm_DB, format
