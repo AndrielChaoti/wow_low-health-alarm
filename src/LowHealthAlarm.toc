@@ -1,4 +1,4 @@
-## Interface: 70100
+## Interface: 80100
 ## Title: Low Health Alarm
 ## Notes: Plays noises and warns the player when they're dying
 ## Version: @project-version@
