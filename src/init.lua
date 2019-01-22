@@ -9,7 +9,7 @@
 	Version: @file-revision@
 
 	ALL RIGHTS RESERVED.
-	COPYRIGHT (c)2016 VANDESDELCA32
+	COPYRIGHT (c)2019 Andriel Chaoti
 ]]
 
 local AppName, App = ...
