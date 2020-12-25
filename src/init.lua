@@ -99,7 +99,7 @@ function MyAddon:OnEnable()
 		self:Print(format(L["CHAT/LoginMessage"], verStr))
 	end
 
-	self:RegisterEvent("UNIT_HEALTH_FREQUENT")
+	self:RegisterEvent("UNIT_HEALTH")
 	self:RegisterEvent("PLAYER_DEAD")
 end
 
