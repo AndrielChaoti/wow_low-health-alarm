@@ -170,7 +170,7 @@ end
 --------------------
 -- Event handling --
 --------------------
-function A:UNIT_HEALTH_FREQUENT(event, ...)
+function A:UNIT_HEALTH(event, ...)
 	local unitName = select(1, ...)
 	if unitName == "player" then
 		self:CheckHealth();
