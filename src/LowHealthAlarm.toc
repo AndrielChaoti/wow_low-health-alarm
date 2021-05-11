@@ -1,4 +1,4 @@
-## Interface: 90001
+## Interface: 90005
 ## Title: Low Health Alarm
 ## Notes: Plays noises and warns the player when they're dying
 ## Version: @project-version@
